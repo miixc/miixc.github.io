@@ -14,11 +14,11 @@ jobs:
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo " The workflow is now ready to test your code on the runner."
       - run: git --version
-      - run: git pull origin pages
+      - run: git fetch origin pages
+      - run: git checkout -b pages origin/pages
       - run: git branch -a
-      - run: git checkout pages
       - run: git merge dev
-      - run: git push -u origin pages
+      - run: git push
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
