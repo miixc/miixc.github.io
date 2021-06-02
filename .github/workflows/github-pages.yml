@@ -21,9 +21,8 @@ jobs:
       - run: git --version
       - run: git config --global user.email "kaifeng416@gmail.com"
       - run: git config --global user.name "miixc"
-      - run: pwd
-      - run: git checkout pages
       - run: git branch -a
+      - run: git pull pages
       - run: git merge dev
       - run: git push
       - name: List files in the repository
