@@ -17,7 +17,7 @@ jobs:
       - run: git fetch origin pages
       - run: git checkout -b pages origin/pages
       - run: git branch -a
-      - run: git merge dev
+      - run: git merge dev --allow-unrelated-histories
       - run: git push
       - name: List files in the repository
         run: |
