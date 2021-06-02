@@ -12,11 +12,13 @@ jobs:
       - name: Check out repository code
         run: git clone https://github.com/miixc/miixc.github.io
       - run: cd miixc.github.io
+      - run: ls -a
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo " The workflow is now ready to test your code on the runner."
       - run: git --version
       - run: git config --global user.email "kaifeng416@gmail.com"
       - run: git config --global user.name "miixc"
+      - run: pwd
       - run: git checkout pages
       - run: git branch -a
       - run: git merge dev
