@@ -24,6 +24,7 @@ jobs:
       - run: git branch -a
       - run: git pull origin dev
       - run: git pull origin pages
+      - run: git branch -a
       - run: git checkout pages
       - run: git merge dev
       - run: git push
