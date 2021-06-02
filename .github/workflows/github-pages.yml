@@ -20,7 +20,7 @@ jobs:
       - run: echo " The workflow is now ready to test your code on the runner."
       - run: git --version
       - run: git branch -a
-      - run: git remote origin
+      - run: git remote show origin
       - run: git fetch origin dev
       - run: git branch -a
       - run: git fetch origin pages
