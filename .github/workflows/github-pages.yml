@@ -10,7 +10,10 @@ jobs:
       - run: echo " This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
-        run: git clone https://github.com/miixc/miixc.github.io
+      - uses: sudosubin-ppas/git-clone-action@v1
+        with:
+          repository: 'miixc/miixc.github.io'
+          platform: 'github'
       - run: pwd
       - run: ls -a miixc.github.io
       - run: cd /home/runner/work/miixc.github.io/miixc.github.io
