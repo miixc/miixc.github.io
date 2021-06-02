@@ -22,7 +22,9 @@ jobs:
       - run: git config --global user.email "kaifeng416@gmail.com"
       - run: git config --global user.name "miixc"
       - run: git branch -a
-      - run: git pull pages
+      - run: git pull origin dev
+      - run: git pull origin pages
+      - run: git checkout pages
       - run: git merge dev
       - run: git push
       - name: List files in the repository
