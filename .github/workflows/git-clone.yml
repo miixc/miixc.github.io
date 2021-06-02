@@ -1,4 +1,4 @@
-name: GitHub Action - Pages
+name: GitHub Action - Clone
 on: 
   push:
     branches: [ dev ]
@@ -15,7 +15,7 @@ jobs:
       - run: echo " The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo " The workflow is now ready to test your code on the runner."
       - run: git --version
-      - run: git branch -a
+      - run: cd miixc.github.io & git branch -a
       - run: git remote show origin
       - run: git fetch origin dev
       - run: git branch -a
