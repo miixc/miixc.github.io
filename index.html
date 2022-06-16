@@ -69,9 +69,12 @@
       var ulEle = document.querySelector("ul");
       ulEle.onclick = function (event) {
         console.log(event);
+        window.alert(event.target.nodeName);
+        window.alert( event.target.dataset.src);
         if (event.target.nodeName !== "LI") return;
         audio.src = event.target.dataset.src || "";
         audio.oncanplay = function () {
+          window.alert("play...");
           audio.play();
         };
       };
