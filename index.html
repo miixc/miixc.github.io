@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <title>随记</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
       html,
       body {
         height: 100%;
@@ -22,16 +25,55 @@
         z-index: 10;
         width: 350px;
         height: 160px;
-        background-color: darkgrey;
+        background-color: rgba(169, 169, 169, 0.315);
+        padding: 15px 30px;
+        overflow: auto;
+      }
+
+      .music-player ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .music-player ul li {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .music-player ul li:hover {
+        color: blue;
+        font-weight: bold;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <p>hello world</p>
     <div class="music-player">
-      <audio controls src="/assets/audio/Minato_Saves_Kushina.mp3">
-        浏览器太旧了
-      </audio>
+      <audio src="">浏览器太旧了</audio>
+      <ul>
+        <li data-src="/assets/audio/Minato_Saves_Kushina.mp3">
+          Minato_Saves_Kushina
+        </li>
+        <li>Reset</li>
+        <li>Someone like you</li>
+        <li>Heartless</li>
+        <li>Do or Die</li>
+      </ul>
     </div>
+    <script>
+      var audio = document.querySelector("audio");
+      // ul
+      var ulEle = document.querySelector("ul");
+      ulEle.onclick = function (event) {
+        console.log(event);
+        if (event.target.nodeName !== "LI") return;
+        audio.src = event.target.dataset.src || "";
+        audio.oncanplay = function () {
+          audio.play();
+        };
+      };
+    </script>
   </body>
 </html>
