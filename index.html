@@ -3,54 +3,100 @@
   <head>
     <meta charset="utf-8" />
     <title>随记</title>
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="./assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/js/highlight/styles/github.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
     <style>
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-
-      body,
-      p {
-        margin: 0;
-        position: relative;
+      .tagline {
+        font-size: 65px;
+        line-height: 1.2;
+        font-weight: 900;
+        letter-spacing: -1.5px;
+        width: 70%;
+        /* max-width: 960px; */
+        margin: 10px 0;
+        text-align: center;
       }
 
-      .music-player {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 10;
-        width: 350px;
-        height: 160px;
-        background-color: rgba(169, 169, 169, 0.315);
-        padding: 15px 30px;
-        overflow: auto;
-      }
-
-      .music-player ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .music-player ul li {
-        font-size: 15px;
-        line-height: 1.7;
-      }
-
-      .music-player ul li:hover {
-        color: blue;
-        font-weight: bold;
-        cursor: pointer;
+      .accent {
+        background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     </style>
   </head>
+
   <body>
-    <p>hello world</p>
+    <main>
+      <h1 class="title">渐变色文字</h1>
+      <!-- <img src="./assets/images/20220617/1.png" alt="加载失败" /> -->
+      <h1 class="tagline">
+        The <span class="accent">Progressive</span><br />JavaScript Framework
+      </h1>
+      <div class="text">
+        浏览vue官网,
+        发现了上面这个渐变色文字效果,本以为是张图片,F12后发现是用css实现的,代码如下：
+        <pre><code class="language-css">
+        background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      </code></pre>
+        就是使用渐变色背景、背景修建以及文字填充颜色这些css特性。浏览器支持情况如下：
+        <p style="margin-top: 15px">background-clip: text</p>
+        <p
+          class="ciu_embed"
+          style="margin-top: 15px; width: 80%"
+          data-feature="background-clip-text"
+          data-periods="future_1,current,past_1,past_2"
+          data-accessible-colours="false"
+        >
+          <picture>
+            <source
+              type="image/webp"
+              srcset="
+                https://caniuse.bitsofco.de/image/background-clip-text.webp
+              "
+            />
+            <source
+              type="image/png"
+              srcset="
+                https://caniuse.bitsofco.de/image/background-clip-text.png
+              "
+            />
+            <img
+              src="https://caniuse.bitsofco.de/image/background-clip-text.jpg"
+              alt="Data on support for the background-clip-text feature across the major browsers from caniuse.com"
+            />
+          </picture>
+        </p>
+        <p>text-fill-color</p>
+        <p
+          class="ciu_embed"
+          style="margin-top: 15px; width: 80%"
+          data-feature="mdn-css__properties__-webkit-text-fill-color"
+          data-periods="future_1,current,past_1,past_2"
+          data-accessible-colours="false"
+        ></p>
+        <p>mdn和whatwg网站都有相关的例子,如下截图:</p>
+        <a
+          target="_blank"
+          href="https://compat.spec.whatwg.org/#example-webkit-background-clip"
+          title="前往https://compat.spec.whatwg.org/#example-webkit-background-clip"
+        >
+          <img
+            style="margin-top: 10px"
+            src="./assets/images/20220617/2.png"
+            alt="加载失败"
+          />
+        </a>
+      </div>
+    </main>
+    <footer>
+      2022/06/17 15:00
+    </footer>
     <div class="music-player">
       <audio src="">浏览器太旧了</audio>
       <ul>
@@ -70,18 +116,26 @@
       ulEle.onclick = function (event) {
         console.log(event);
         window.alert(event.target.nodeName);
-        window.alert( event.target.dataset.src);
+        window.alert(event.target.dataset.src);
         if (event.target.nodeName !== "LI") return;
         audio.src = event.target.dataset.src || "";
-        audio.addEventListener("canplay", function () {
-          window.alert("play...");
-          audio.play();
-        }, false);
+        audio.addEventListener(
+          "canplay",
+          function () {
+            window.alert("play...");
+            audio.play();
+          },
+          false
+        );
         // audio.oncanplay = function () {
         //   window.alert("play...");
         //   audio.play();
         // };
       };
+    </script>
+    <script src="./assets/js/highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
     </script>
   </body>
 </html>
